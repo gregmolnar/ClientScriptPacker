@@ -37,6 +37,7 @@ class ClientScriptPacker extends CClientScript
 	if(!file_exists(Yii::app()->assetManager->basePath . DIRECTORY_SEPARATOR.$this->names[$position])){	
 	    if(isset($this->scriptFiles[$position])){
 		foreach($this->scriptFiles[$position] as $file){
+		    $file = $_SERVER['DOCUMENT_ROOT'].'/'.ltrim($file,'/');
 		    $data .= file_get_contents($file);
 		}
 		if($this->compressScriptFiles){
