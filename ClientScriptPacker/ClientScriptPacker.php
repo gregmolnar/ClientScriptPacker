@@ -34,21 +34,21 @@ class ClientScriptPacker extends CClientScript
     public function packScriptFiles($position)
     {
 	$data = '';
-	if(!file_exists(Yii::app()->assetManager->basePath . DIRECTORY_SEPARATOR.$this->names[$position])){	
+	if(!file_exists(Yii::app()->assetManager->basePath.DIRECTORY_SEPARATOR.$this->names[$position])){	
 	    if(isset($this->scriptFiles[$position])){
 		foreach($this->scriptFiles[$position] as $file){
-		    $file = $_SERVER['DOCUMENT_ROOT'].'/'.ltrim($file,'/');
+		    $file = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.ltrim($file,DIRECTORY_SEPARATOR);
 		    $data .= file_get_contents($file);
 		}
 		if($this->compressScriptFiles){
-		    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'jsmin.php';
+		    require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'jsmin.php';
 		    $data = JSMin::minify($data);
 		}
-		file_put_contents(Yii::app()->assetManager->basePath . DIRECTORY_SEPARATOR.$this->names[$position],$data);
-		$this->scriptFiles[$position] = array(Yii::app()->assetManager->baseUrl . DIRECTORY_SEPARATOR.$this->names[$position]);
+		file_put_contents(Yii::app()->assetManager->basePath.DIRECTORY_SEPARATOR.$this->names[$position],$data);
+		$this->scriptFiles[$position] = array(Yii::app()->assetManager->baseUrl.'/'.$this->names[$position]);
 	    }
 	}else{
-	    $this->scriptFiles[$position] = array(Yii::app()->assetManager->baseUrl . DIRECTORY_SEPARATOR.$this->names[$position]);
+	    $this->scriptFiles[$position] = array(Yii::app()->assetManager->baseUrl.'/'.$this->names[$position]);
 	}
     }
     
