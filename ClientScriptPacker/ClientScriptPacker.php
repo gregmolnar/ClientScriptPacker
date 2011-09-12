@@ -54,7 +54,7 @@ class ClientScriptPacker extends CClientScript
     {
 		if ($this->packScriptFiles && $this->enableJavaScript)
 		    $this->packScriptFiles(self::POS_BEGIN);
-	    parent::renderHead($output);
+	    parent::renderBodyBegin($output);
     }
     
 	/**
@@ -65,7 +65,7 @@ class ClientScriptPacker extends CClientScript
     {
 		if ($this->packScriptFiles && $this->enableJavaScript)
 		    $this->packScriptFiles(self::POS_END);
-	    parent::renderHead($output);
+	    parent::renderBodyEnd($output);
     }
     /**
 	* Merge the scripfiles
