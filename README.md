@@ -17,3 +17,4 @@ If this is done you can register your scriptfiles like you did before with `Yii:
 IMPORTANT! You need to pass the path relatively to your ``$_SERVER['DOCUMENT_ROOT']`` to the registerScriptFile method.
 
 If you experience any problem please give me a shout. 
+I removed the caching because it didn't work well with the assets. The minify option is off by default because it can really slow down things. I need to rework this extension just need to find to do it.
